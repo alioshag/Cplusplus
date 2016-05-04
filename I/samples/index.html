@@ -1,0 +1,1543 @@
+<HTML>
+<HEAD>
+<LINK REL = "stylesheet" HREF = "/~mm64/INFO1-CE9264/stylesheet.css">
+<TITLE>INFO1-CE9264 Source Code</TITLE>
+</HEAD>
+
+<BODY>
+<H1><A HREF = "/~mm64/INFO1-CE9264/">INFO1-CE9264</A> Source Code
+<BR>(a.k.a X52.9264 and Y12.1003)</H1>
+
+<H2>Definitions:
+<BR>computer, program, language,
+<BR>project, file, function</H2>
+
+<P>
+A
+<I>computer</I>
+is a machine that follows instructions.
+A
+<I>program</I>
+is the list of instructions for the computer to execute.
+In the future,
+programs will be written in English.
+Until that days comes,
+programs are written in simpler languages such as C or C++.
+</P>
+
+<H2>Printing</H2>
+
+<OL>
+<LI><CODE>http://i5.nyu.edu/~mm64/INFO1-CE9264/src/<A HREF =
+"hello.C">hello.C</A></CODE>:
+
+<OL>
+<LI>
+A program is written in one or more
+<I>files</I>
+(documents).
+On my Solaris Unix box i5.nyu.edu,
+the filename ends with
+<CODE>.C</CODE>
+(uppercase);
+on your machine, the filename might end with
+<CODE>.CPP</CODE>
+or
+<CODE>.CXX</CODE>.
+On some systems,
+the files that make up the program are held in a
+<I>project</I>.
+A C++ program is
+<I>case-sensitive:</I>
+it makes a difference if you write in uppercase or lowercase.
+</LI>
+
+<LI>Produce output to verify that the program ran.
+<CODE>"</CODE>double-quoted<CODE>"</CODE>
+strings and the newline (<CODE>\n</CODE>).</LI>
+
+<LI>Two built-in destinations for characters:
+<OL>
+<LI><CODE>std::<A HREF =
+"/cgi-bin/cgiwrap/mm64/man?3c%2B%2B+cout">cout</A></CODE>
+for standard output (the output producted by the program)</LI>
+<LI><CODE>std::<A HREF =
+"/cgi-bin/cgiwrap/mm64/man?3c%2B%2B+cerr">cerr</A></CODE>
+for standard error output (error messages)</LI>
+</OL>
+A
+<I>namespace</I>
+is a family of things that share the same last name,
+in this case
+<CODE>std</CODE>.
+No space between colons.
+</LI>
+
+<LI>The
+<CODE>&lt;&lt;</CODE>
+operator points towards the destination.
+No space between
+<CODE>&lt;&rsquo;s</CODE>;
+type it exactly the way I do.
+</LI>
+
+<LI>Semicolon at end of each statement.</LI>
+
+<LI>A C++ program consists of sections called
+<I>functions</I>.
+Even if you have no desire to divide the program into functions,
+the program must still consist of one big function.
+The one big function must be named
+<CODE>main</CODE>.
+The lines
+
+<PRE CLASS = "C">
+int main()
+{
+</PRE>
+
+mark the start of the
+<CODE>main</CODE>
+function;
+the line
+
+<PRE CLASS = "C">
+}
+</PRE>
+
+marks the end.
+Conventional to indent the body of the function one tab.
+The parentheses will not be used until later;
+we still have to write them even though they&rsquo;re empty.
+This pattern will appear often:
+<BR><CODE>keyword (parentheses) {curly braces}</CODE>.
+</LI>
+
+<LI>Return
+an
+<CODE>int</CODE>
+from the
+<CODE>main</CODE>
+function to the operating system:
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c+exit">EXIT_SUCCESS</A></CODE>
+for success,
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c+exit">EXIT_FAILURE</A></CODE>
+for failure.
+<OL>
+<LI>Unix Korn and Bash shells (including Macintosh Terminal):
+<KBD><A HREF = "/cgi-bin/cgiwrap/mm64/man?echo">echo</A> $?</KBD></LI>
+<LI>Unix C shell:
+<KBD><A HREF = "/cgi-bin/cgiwrap/mm64/man?echo">echo</A> $status</KBD></LI>
+<LI>Windows Command Prompt:
+<KBD>echo %errorlevel%</KBD></LI>
+</OL>
+Windows:
+<CODE><A HREF =
+"/cgi-bin/cgiwrap/mm64/man?3c+system">system</A>("PAUSE");</CODE>
+</LI>
+
+<LI>Header files,
+showing where to find them on i5.nyu.edu:
+<OL>
+<LI><CODE>/opt/gcc453/include/c++/4.5.3/<A HREF =
+"/cgi-bin/cgiwrap/mm64/man?ios.intro">iostream</A></CODE>
+for
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c%2B%2B+cout">cout</A></CODE>,
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c%2B%2B+cerr">cerr</A></CODE>,
+<CODE>&lt;&lt;</CODE></LI>
+
+<LI><CODE>/opt/gcc453/include/c++/4.5.3/<A HREF =
+"/cgi-bin/cgiwrap/mm64/man?stdlib">cstdlib</A></CODE>
+for
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c+exit">EXIT_SUCCESS</A></CODE></LI>
+</OL>
+</LI>
+
+<LI>Comments:
+<OL>
+<LI><CODE>//</CODE> for single-line</LI>
+<LI><CODE>/* */</CODE> for multi-line</LI>
+</OL>
+</LI>
+
+<LI>What happens if you omit a semicolon, double quote, etc.?</LI>
+
+<LI>Run in
+<A HREF = "/~mm64/INFO1-CE9264/bloodshed.html">Bloodshed</A>,
+Windows command prompt,
+and
+<A HREF = "/~mm64/INFO1-CE9264/unix.html">Unix</A>.
+<CODE>cerr</CODE>
+is immune to
+<CODE>></CODE>,
+so send input prompts to
+<CODE>cerr</CODE>
+when the standard out is directed into a file.
+If you said
+<CODE><A HREF =
+"/cgi-bin/cgiwrap/mm64/man?3c+system">system</A>("PAUSE");</CODE>,
+you will have to press any key to continue.
+
+<OL>
+<LI><KBD>prog.exe &gt; output.txt</KBD></LI>
+<LI><KBD>prog.exe 2&gt; errors.txt</KBD></LI>
+<LI><KBD>prog.exe &gt; output.txt 2&gt; errors.txt</KBD></LI>
+<LI><KBD>prog.exe &gt; both.txt 2>&amp;1</KBD></LI>
+</OL>
+</LI>
+</OL>
+
+<LI><CODE><A HREF = "using.C">using.C</A></CODE>:
+A
+<I>namespace</I>
+is a family of things that share the same last name.
+<code>using</CODE>
+gets us on a first-name basis with all the members of a namespace.
+</LI>
+
+<LI>Newlines:
+<CODE><A HREF = "dime1.C">dime1.C</A></CODE>
+and
+<CODE><A HREF = "dime2.C">dime2.C</A></CODE>.</LI>
+
+<LI><CODE><A HREF = "flag.C">flag.C</A></CODE>:
+10 lines of output.
+Later we&rsquo;ll do all the output in a single statement:
+
+<PRE CLASS = "C">
+	cout << "* * * * * * =====================\n"
+	     << " * * * * *  =====================\n"
+	     << "* * * * * * =====================\n"
+	     << " * * * * *  =====================\n"
+	     << "* * * * * * =====================\n"
+	     << "=================================\n"
+	     << "=================================\n"
+	     << "=========E pluribus unum=========\n"
+	     << "=================================\n"
+	     << "=================================\n";
+</PRE>
+
+<LI><CODE><A HREF = "batman.bmp">batman.bmp</A></CODE>.
+My friend tried it and came up with &ldquo;Cat Woman&rdquo;.</LI>
+</OL>
+
+<H2>Variables</H2>
+
+<OL>
+<LI><CODE><A HREF = "variable.C">variable.C</A></CODE>:
+create
+<CODE>int</CODE>
+variables and give them an initial value.
+Send several items to the same destination in a single statement;
+retrofit this technique into
+<CODE><A HREF = "flag.C">flag.C</A></CODE>.
+</LI>
+
+<LI><CODE><A HREF = "minimum.C">minimum.C</A></CODE>:
+the minimum and maximum value that can be held in an
+<CODE>int</CODE>
+may be different on each platform.
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3head+limits.h">INT_MIN</A></CODE>,
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3head+limits.h">INT_MAX</A></CODE>.
+The header file
+<CODE>climits</CODE>
+(known as
+<CODE>limits.h</CODE>
+in the languge C)
+has its own
+<A HREF = "http://en.wikipedia.org/wiki/Limits.h">Wikipedia article</A>.
+</LI>
+
+<LI><CODE><A HREF = "expression.C">expression.C</A></CODE>:
+An
+<I>expression</I>
+is made of
+<I>operands</I>
+and
+<I>operators</I>.
+The operands could be
+<I>literals</I>
+(<CODE>10</CODE>,
+<CODE>20</CODE>,
+<CODE>30</CODE>)
+or variables
+(<CODE>i</CODE>,
+<CODE>j</CODE>,
+<CODE>k</CODE>).
+The operators could be
+<CODE>+</CODE>
+<CODE>&ndash;</CODE>
+<CODE>*</CODE>
+<CODE>/</CODE>
+etc.
+Override operator precedence and associativity with parentheses.
+Table of precedence and associativity on page 6 of
+<A HREF = "/~mm64/book/chapter01.pdf">Chapter 1</A>.
+Examples of different associativities:
+
+<PRE CLASS = "C">
+//left-to-right associativity
+a + b + c		//order doesn't matter: you get the same sum either way
+cout &lt;&lt; a &lt;&lt; " " &lt;&lt; b &lt;&lt; " " &lt;&lt; c &lt;&lt; "\n";	//order does matter
+
+//right-to-left associativity
+c = b = a = 10;
+++*p
+*++p
+a ? b : c ? d : e
+</PRE>
+
+Expressions where some of the operators are executed in an
+unpredictable order:
+
+<PRE CLASS = "C">
+a * b + c * d	//can't predict which multiplication  is performed first
+f() + g()	//can't predict which function is called first
+
+int a[100];
+int i = 10;
+a[i] = ++i;	//puts the value 11 into either a[10] or a[11]
+a[i] = i--;	//puts the value 10 into either a[10] or a[11]
+</PRE>
+</LI>
+
+<LI><CODE><A HREF = "remainder.C">remainder.C</A></CODE>:
+division and remainder.
+Integer division truncates.
+Unportable results for negative numbers.
+Unpredictable behavior for division by zero;
+what is the exit status?</LI>
+
+<LI><CODE><A HREF = "assign.C">assign.C</A></CODE>:
+Assign a new value to a variable.
+The new value can be an expression,
+possibly mentioning the same variable.
+Integer overflow.
+Can&rsquo;t assign to a
+<CODE>const</CODE>
+variable.</LI>
+
+<LI><CODE><A HREF = "jobdone1.C">jobdone1.C</A></CODE>:
+when will the job be done?
+An i/o manipulator that takes an argument
+(<CODE>setfill</CODE>,
+<CODE>setw</CODE>)
+requires
+<CODE>&lt;iomanip&gt;</CODE>.
+<!--
+See also
+<CODE><A HREF = "jobdone2.C">jobdone2.C</A></CODE>.
+-->
+</LI>
+
+<LI><CODE><A HREF = "input.C">input.C</A></CODE>:
+<CODE>std::<A HREF = "/cgi-bin/cgiwrap/mm64/man?3c%2B%2B+cin">cin</A></CODE>
+is the standard input.
+Check for input failure
+(e.g., a word instead of a whole number;
+an integer that is too big or too small to fit in an
+<CODE>int</CODE>;
+premature end-of-input;
+or hardware failure).
+<CODE>if</CODE>
+statement has same
+<CODE>(</CODE>parentheses<CODE>)</CODE>
+and
+<CODE>{</CODE>curly
+braces<CODE>}</CODE>
+braces as the
+<CODE>main</CODE>
+function.
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c+exit">EXIT_FAILURE</A></CODE>;
+check the exit status.
+<OL>
+<LI><KBD>prog.exe &lt; input.txt</KBD></LI>
+</OL>
+</LI>
+
+<LI>Input in
+<A HREF = "windowsinput.html">Microsoft Windows</A>.
+</LI>
+
+<LI>Homework:
+<CODE>age.C</CODE>,
+<CODE>wait.C</CODE>,
+<CODE>cents.C</CODE>,
+<CODE>turkey.C</CODE>,
+<CODE>change.C</CODE>.
+<BR>1 human year = 7 dog years.
+<TABLE>
+<TR>
+<TD ROWSPAN = 2 WIDTH = 15%>&nbsp;</TD>
+<TD>
+<P>
+Then you bank the heat and let the kettle simmer&mdash;ten
+minutes for the first pound of lobster,
+then three minutes for each pound after that.
+(This is assuming you&rsquo;ve got hard shell lobsters,
+which,
+again,
+if you don&rsquo;t live between Boston and Halifax
+is probably what you&rsquo;ve got.
+For shedders [soft-shell],
+you&rsquo;re supposed to subtract three minutes from the total.)
+</P>
+</TD>
+
+<TD ROWSPAN = 2 WIDTH = 15%>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD ALIGN = RIGHT>&mdash;<A HREF =
+"http://en.wikipedia.org/wiki/Consider_the_Lobster">David Foster Wallace</A>,
+<CITE><A HREF = "http://en.wikipedia.org/wiki/Consider_the_Lobster">Consider
+the Lobster</A></CITE></TD>
+</TR>
+</TABLE>
+
+</LI>
+</OL>
+
+<H2>Control Structure</H2>
+<H3>Loops: while, for, do-while</H3>
+
+<OL>
+<LI><CODE><A HREF = "nottoprogram.C">nottoprogram.C</A></CODE>:
+how not to program.
+Idiom is to count from 0 to 9 inclusive,
+not from 1 to 10 inclusive.</LI>
+
+<LI><CODE><A HREF = "while.C">while.C</A></CODE>:
+<CODE>while</CODE>
+loop has same
+<CODE>(</CODE>parentheses<CODE>)</CODE>
+and
+<CODE>{</CODE>curly
+braces<CODE>}</CODE>
+braces as the
+<CODE>main</CODE>
+function and the
+<CODE>if</CODE>
+statement.
+Conventional to count from 0 to 9 inclusive,
+not 1 to 10 inclusive,
+because array subscripts will start at 0.
+Prefix increment operator
+<CODE>++</CODE>.
+<OL>
+<LI>0 to 10 by 1&rsquo;s: the <CODE>&lt;=</CODE> operator</LI>
+<LI>10 to 20 by 1&rsquo;s</LI>
+<LI>10 to 20 by 2&rsquo;s: the three vital statistics</LI>
+<LI>1 to 536,870,912 = 2<SUP>29</SUP>
+(the next-to-largest power of 2 that will fit in a 32-bit integer),
+doubling each time</LI>
+<LI>count down:
+prefix decrement operator
+<CODE>&ndash;&ndash;</CODE>
+(two minus signs, no space between them)</LI>
+
+<LI>How long does it tke to loop through all four billion
+(2<SUP><SMALL>32</SMALL></SUP> = 4,294,967,296)
+integer values?</LI>
+
+<LI>iterate zero times</LI>
+</OL>
+</LI>
+
+<!--
+<LI>Retrofit
+<CODE>while</CODE>
+loop into
+<CODE><A HREF = "jobdone2.C">jobdone2.C</A></CODE>.</LI>
+-->
+
+<LI><CODE><A HREF = "for1.C">for1.C</A></CODE>:
+put all three vital statistics on the same line.</LI>
+
+<LI><CODE><A HREF = "for2.C">for2.C</A></CODE>:
+make
+<CODE>i</CODE>
+local to the loop.
+How long does it take to loop a billion times?</LI>
+
+<LI><CODE><A HREF = "beer.C">beer.C</A></CODE>:
+<CITE><A HREF =
+"http://en.wikipedia.org/wiki/99_Bottles_of_Beer">A Hundred Bottles of Beer
+on the Wall</A></CITE></LI>
+
+<LI><CODE><A HREF = "infinite.C">infinite.C</A></CODE>:
+an infinite loop</LI>
+
+<LI><CODE><A HREF = "pierogies.C">pierogies.C</A></CODE>:
+needs only one variable</LI>
+
+<LI><CODE><A HREF = "thruway.C">thruway.C</A></CODE>:
+needs only one variable</LI>
+
+<LI><CODE><A HREF = "dowhile.C">dowhile.C</A></CODE>:
+<NOBR><CODE>do-while</CODE></NOBR>
+loop has test at the bottom.
+Always iterates at least once.</LI>
+</OL>
+
+<H3>Nested loops</H3>
+
+<OL>
+<LI><CODE><A HREF = "lucy1.C">lucy1.C</A></CODE>:
+and
+<CODE><A HREF = "lucy2.C">lucy2.C</A></CODE>:
+<CITE><A HREF =
+"http://en.wikipedia.org/wiki/Lucy_in_the_Sky_with_Diamonds">Lucy in the Sky
+With Diamonds</A></CITE></LI>
+
+<LI><CODE><A HREF = "line.C">line.C</A></CODE>
+and
+<CODE><A HREF = "rectangle.C">rectangle.C</A></CODE>.
+A
+<A HREF = "http://scratch.mit.edu/">Scratch</A>
+script
+<CODE><A HREF = "rectangle.sb">rectangle.sb</A></CODE>.</LI>
+
+<LI>Graph paper.
+Add the missing left and bottom edges.
+<OL>
+<LI><CODE><A HREF = "graph1.C">graph1.C</A></CODE>:
+no loop, hardwired to do 10 rows and 10 columns</LI>
+
+<LI><CODE><A HREF = "graph2.C">graph2.C</A></CODE>:
+one loop, inputs the number of rows, hardwired to do 10 columns</LI>
+
+<LI><CODE><A HREF = "graph3.C">graph3.C</A></CODE>:
+nested loops, inputs the number of rows and columns</LI>
+
+<LI><A NAME = "graph_paper">Homework.</A>
+Let the user input the following four numbers
+when outputting graph paper.
+Here are two examples:
+
+<PRE CLASS = "output">
+How many rows of boxes? 2
+How many columns of boxes? 4
+How many rows of blanks in each box (e.g., 1)? 1
+How many columns of blanks in each box (e.g., 3)? 4
+
++----+----+----+----
+|    |    |    |
++----+----+----+----
+|    |    |    |
+</PRE>
+
+<PRE CLASS = "output">
+How many rows of boxes? 2
+How many columns of boxes? 4
+How many rows of blanks in each box (e.g., 1)? 3
+How many columns of blanks in each box (e.g., 3)? 8
+
++--------+--------+--------+--------
+|        |        |        |
+|        |        |        |
+|        |        |        |
++--------+--------+--------+--------
+|        |        |        |
+|        |        |        |
+|        |        |        |
+</PRE>
+</LI>
+</OL>
+
+<!--
+<LI><CODE><A HREF = "diagonal.C">diagonal.C</A></CODE>:
+the lines of output get longer and longer.
+</LI>
+-->
+
+<LI><CODE><A HREF = "factor.C">factor.C</A></CODE>:
+find the prime factors of an integer.
+Only need to loop as far as
+<CODE>factor &lt;= <A HREF = "/cgi-bin/cgiwrap/mm64/man?sqrt">sqrt</A>(n)</CODE>.</LI>
+</OL>
+
+<H3>if statements</H3>
+<OL>
+<LI><CODE><A HREF = "if.C">if.C</A></CODE>:
+<CODE>if</CODE>
+statement</LI>
+
+<LI>Examples of
+<CODE>if</CODE>:
+<OL>
+
+<LI><CODE><A HREF = "input.C">input.C</A></CODE>:
+we already checked the health of
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?cin">cin</A></CODE>.
+</LI>
+
+<!--
+<LI><CODE><A HREF = "jobdone2.C">jobdone2.C</A></CODE>:
+make sure the hour is never greater than 12.
+Toggle a.m. and p.m.
+</LI>
+-->
+
+<LI><CODE><A HREF = "isprime.C">isprime.C</A></CODE>.
+<CODE>if</CODE>
+to verify that input was sucessful.
+<NOBR><CODE>do-while</CODE></NOBR>
+loop until input is correct.
+</LI>
+</OL>
+</LI>
+
+<LI><CODE><A HREF = "else1.C">else1.C</A></CODE>
+and
+<CODE><A HREF = "else2.C">else2.C</A></CODE>:
+if-else statement.
+<!--
+Retrofit
+<CODE>else</CODE>
+into
+<CODE><A HREF = "jobdone2.C">jobdone2.C</A></CODE>.
+-->
+</LI>
+
+<!--
+<LI><CODE><A HREF = "upside.C">upside.C</A></CODE>: smaller clause at top</LI>
+-->
+
+<LI><CODE><A HREF = "if_in_then1.C">if_in_then1.C</A></CODE>
+and
+<CODE><A HREF = "if_in_then2.C">if_in_then2.C</A></CODE>:
+put a smaller
+<CODE>if</CODE>
+into the
+<CODE>then</CODE>
+section of a larger
+<CODE>if</CODE>
+that has no
+<CODE>else</CODE>.
+</LI>
+
+<LI><CODE><A HREF = "if_in_else1.C">if_in_else1.C</A></CODE>
+and
+<CODE><A HREF = "if_in_else2.C">if_in_else2.C</A></CODE>:
+put a smaller
+<CODE>if</CODE>
+into the
+<CODE>else</CODE>
+section of a larger
+<CODE>if</CODE>.
+</LI>
+
+<!--
+<LI><CODE><A HREF = "else_if1.C">else_if1.C</A></CODE>
+and
+<CODE><A HREF = "else_if2.C">else_if2.C</A></CODE>:
+an
+<CODE>else</CODE>
+section occupied entirely by another
+<CODE>if</CODE>.
+</LI>
+-->
+
+<LI>Chains of
+<CODE>else-if</CODE>:
+
+<OL>
+<LI><CODE><A HREF = "threeway.C">threeway.C</A></CODE>:
+steer the computer in one of three possible directions.</LI>
+
+<LI><CODE><A HREF = "chance.C">chance.C</A></CODE>:
+keep giving the user another chance to enter valid input.</LI>
+
+<LI>The
+<A HREF = "http://mta.info/mnr/">Metro-North</A>
+evacuation instructions:
+<OL>
+<LI>Remain inside the train if possible.
+If not &hellip;</LI>
+<LI>Go to next car through end doors.
+If Unable &hellip;</LI>
+<LI>Open side door and get out.
+If you can&rsquo;t &hellip;</LI>
+<LI>Go out emergency windows.</LI>
+</OL>
+
+<PRE>
+if (it is possible to remain inside the train) {
+	remain inside the train;
+} else if (you are able to go to next car through end doors) {
+	go to next car through end doors;
+} else if (you can open the side door and get out) {
+	open the side door and get out;
+} else {
+	go out emergency windows;
+}
+</PRE>
+</LI>
+
+<LI><CODE><A HREF = "leap.C">leap.C</A></CODE>:
+steer the computer in one of four possible directions.</LI>
+
+<LI><CODE><A HREF = "ordinal1.C">ordinal1.C</A></CODE>
+and
+<CODE><A HREF = "ordinal2.C">ordinal2.C</A></CODE>:
+steer the computer in one of five possible directions.
+<CODE>&amp;&amp;</CODE>
+means &ldquo;and&rdquo;.</LI>
+</OL>
+</LI>
+
+<LI><CODE>else-if</CODE>
+inside a loop
+
+<OL>
+<LI><CODE><A HREF = "toolow.C">toolow.C</A></CODE>,
+the
+<CODE><A HREF = "dowhile.C">dowhile.C</A></CODE>
+guessing game with hints.
+<CODE>break</CODE>
+out of an infinite loop.</LI>
+
+<LI><CODE><A HREF = "range.C">range.C</A></CODE>:
+<CODE>for (;;)</CODE>
+loop containing three-way
+<CODE>if</CODE>.
+Make sure input was successful and value in range.
+Also
+<CODE>&amp;&amp;</CODE>,
+and
+<CODE>break</CODE>.</LI>
+
+<LI><CODE><A HREF = "/~mm64/INFO1-CE9264/flag.html">flag</A></CODE> gateway:
+three-way
+<CODE>if</CODE></LI>
+
+<LI><CODE><A HREF = "sine.C">sine.C</A></CODE>
+and
+<CODE><A HREF = "sine.gif">sine.gif</A></CODE>:
+three-way
+<CODE>if</CODE>.
+Plot
+<A HREF = "/cgi-bin/cgiwrap/mm64/man?sin">sine</A>
+curve in front of axes.
+Scale it vertically and horizontally.
+</LI>
+
+<LI><A HREF = "http://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot set</A>:
+<CODE><A HREF = "mandelbrot.C">mandelbrot.C</A></CODE>
+and
+<CODE><A HREF = "mandelbrot.gif">mandelbrot.gif</A></CODE>.</LI>
+
+</OL>
+</LI>
+
+<LI><CODE>switch</CODE>
+and
+<CODE>case</CODE>:
+can be used only if all the comparisons are for equality to integral values
+(<CODE>int</CODE>,
+<CODE>char</CODE>,
+<CODE>bool</CODE>,
+etc.)
+that are constants, not variables.
+<OL>
+<LI><CODE><A HREF = "switch1.C">switch1.C</A></CODE>:
+<CODE>if-else</CODE>.</LI>
+
+<LI><CODE><A HREF = "switch2.C">switch2.C</A></CODE>:
+<CODE>switch</CODE>,
+<CODE>case</CODE>,
+<CODE>break</CODE>.</LI>
+
+<LI><CODE><A HREF = "switch3.C">switch3.C</A></CODE>:
+remove the
+<CODE>break</CODE>&rsquo;s.</LI>
+</OL>
+</LI>
+</OL>
+
+<H2>Data types</H2>
+
+<OL>
+<LI><CODE><A HREF = "integer.C">integer.C</A></CODE>:
+The four types of integers:
+<CODE>signed char</CODE>,
+<CODE>short</CODE>,
+<CODE>int</CODE>,
+<CODE>long</CODE>.
+Use
+<CODE>signed char</CODE>
+for a small integer,
+<CODE>char</CODE>
+for a character.
+Integer division truncates;
+don&rsquo;t divide by zero.
+By default,
+<CODE>signed char</CODE>
+prints as a character;
+cast (i.e., convert) it to
+<CODE>int</CODE>
+with
+<CODE>static_cast</CODE>
+to see it as a decimal integer.
+One single-quoted character stands for the code number of that character
+in the local character set.
+</LI>
+
+<LI><CODE><A HREF = "limits.C">limits.C</A></CODE>:
+Include the header file
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?limits">&lt;climits&gt;</A></CODE>
+for the macros
+<CODE>CHAR_BIT</CODE>,
+<CODE>SCHAR_MIN</CODE>,
+etc.
+(Better yet, we will eventually include the header file
+<CODE>&lt;limits&gt;</CODE>
+for the
+template class
+<CODE><A HREF =
+"/cgi-bin/cgiwrap/mm64/man?numeric_limits">numeric_limits</A></CODE>.)
+A data type used as the operand of
+<CODE>sizeof</CODE>
+must be in parentheses.
+On my platform, the minimum and maximum values, inclusive, are as follows.
+<PRE>
+signed char:                &ndash;128 to                       127
+short:                   &ndash;32,768 to                    32,767
+int:              &ndash;2,147,483,648 to             2,147,483,647
+long:             &ndash;2,147,483,648 to             2,147,483,647
+</PRE>
+</LI>
+
+<LI><CODE><A HREF = "char1.C">char1.C</A></CODE>:
+and
+<CODE><A HREF = "char2.C">char2.C</A></CODE>:
+use the data type
+<CODE>char</CODE>
+to hold a character.
+(What it really holds is the character&rsquo;s code number.)
+<CODE><A HREF = "char1.C">char1.C</A></CODE>
+works only for ASCII;
+<CODE><A HREF = "char2.C">char2.C</A></CODE>
+works for any character set that can be held in a
+<CODE>char</CODE>
+(e.g., EBCDIC).
+The cast prevents the
+<CODE>char</CODE>
+argument of
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c+isprint">isprint</A></CODE>
+from sign extending as it is converted to
+<CODE>int</CODE>.
+</LI>
+
+<LI><CODE><A HREF = "wchar_t.C">wchar_t.C</A></CODE>:
+a wide characters is 4 bytes on my machine.
+Bloodshed does not recognize the object
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?wcout">wcout</A></CODE>.
+In
+<CODE>g++</CODE>
+on
+<CODE>i5.nyu.edu</CODE>,
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?wcout">wcout</A></CODE>
+stops outputting when you feed it a
+<CODE>wchar_t</CODE>
+containing a number >= 256.
+</LI>
+
+<LI><CODE><A HREF = "bool.C">bool.C</A></CODE>:
+A
+<CODE>bool</CODE>
+can hold one of exactly two possible values.</LI>
+
+<LI><CODE><A HREF = "float1.C">float1.C</A></CODE>:
+<CODE>float</CODE>,
+<CODE>double</CODE>,
+<CODE>long double</CODE>.
+Format with
+<CODE>fixed</CODE>
+and
+<CODE>setprecision</CODE>;
+see
+<A HREF = "/~mm64/book/chapter04.pdf">Chapter 4</A>,
+pp. 355&ndash;356.
+</LI>
+
+<LI><CODE><A HREF = "float2.C">float2.C</A></CODE>:
+minimum and maximum values.</LI>
+
+<LI><CODE><A HREF = "float3.C">float3.C</A></CODE>:
+<CODE>static_cast</CODE>.</LI>
+
+<LI>Examples of
+<CODE>double</CODE>
+arithmetic:
+<OL>
+<LI><CODE><A HREF = "gallon.C">gallon.C</A></CODE>:
+<CODE>double</CODE>
+division does not truncate.
+<CODE>if-else</CODE>
+containing an assignment statement.
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?numeric_limits">numeric_limits</A></CODE>
+gives value of
+&infin;.
+We could have initialized
+<CODE>mpg</CODE>
+with a
+<CODE>?:</CODE>
+expression:
+
+<PRE CLASS = "C">
+	const double mpg = gallons == 0
+                ? numeric_limits&lt;double>::infinity()
+                : miles / gallons;
+</PRE>
+</LI>
+
+<LI><CODE><A HREF = "interest.C">interest.C</A></CODE>
+and the approximation
+<CODE><A HREF = "72.C">72.C</A></CODE>
+(see the <A HREF = "http://en.wikipedia.org/wiki/Rule_of_72">Rule of 72</A>):
+how many years does it take for the principal to double?
+<CODE>double</CODE>
+arithmetic for money,
+<NOBR><CODE>do-while</CODE></NOBR>
+loop,
+natural
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?log">log</A></CODE>
+function.
+<TABLE>
+<TR>
+<TD ALIGN = RIGHT>1.06 &times; 1.06 &times; 1.06 &times; &hellip;</TD>
+<TD>=</TD>
+<TD>2</TD>
+</TR>
+
+<TR>
+<TD ALIGN = RIGHT>1.06<SUP><I>y</I></SUP></TD>
+<TD>=</TD>
+<TD>2</TD>
+</TR>
+
+<TR>
+<TD ALIGN = RIGHT>(<I>e</I><SUP><I>ln</I> 1.06</SUP>)<SUP><I>y</I></SUP></TD>
+<TD>=</TD>
+<TD><I>e</I><SUP><I>ln</I> 2</SUP></TD>
+</TR>
+
+<TR>
+<TD ALIGN = RIGHT>(<I>ln</I> 1.06)<I>y</I></TD>
+<TD>=</TD>
+<TD><I>ln</I> 2</TD>
+</TR>
+
+<TR>
+<TD ALIGN = RIGHT><I>y</I></TD>
+<TD>=</TD>
+<TD><TABLE><TR><TD ALIGN = CENTER
+STYLE = "border-bottom: solid 1px black"><I>ln</I> 2</TD></TR><TR><TD><I>ln</I>
+1.06</TD></TR></TABLE></TR>
+</TABLE>
+</LI>
+
+<LI><CODE><A HREF = "organ.C">organ.C</A></CODE>:
+organ pipes spanning one octave.
+Raise a number to a power with the
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?pow">pow</A></CODE>
+function.</LI>
+
+<LI>Random numbers, needed for
+<CODE><A HREF = "pi.C">pi.C</A></CODE>:
+<OL>
+<LI><CODE><A HREF = "random1.C">random1.C</A></CODE>: the
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?rand">rand</A></CODE>
+function returns random integers in the range 0 to
+<CODE>RAND_MAX</CODE>
+inclusive.</LI>
+
+<LI><CODE><A HREF = "random2.C">random2.C</A></CODE>:
+the
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?srand">srand</A></CODE>
+function.
+Different random numbers each time you run the program.
+Convert the return value of
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?2+time">time</A></CODE>
+from
+<CODE>time_t</CODE>
+to
+<CODE>unsigned</CODE>.
+</LI>
+
+<LI><CODE><A HREF = "random3.C">random3.C</A></CODE>:
+random integers in the range 0 to 99 inclusive.</LI>
+
+<LI><CODE><A HREF = "random4.C">random4.C</A></CODE>:
+random fractions in the range 0 to 1 inclusive.</LI>
+</OL>
+</LI>
+
+<LI><CODE><A HREF = "pi.C">pi.C</A></CODE>:
+compute &pi; by the
+<A HREF = "http://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</A>
+method.
+Seed the random number generator with
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?2+time">time</A></CODE>
+and
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?srand">srand</A></CODE>.
+Eliminate the call to the
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?sqrt">sqrt</A></CODE>
+function by squaring both sides of the inequality.
+For
+<CODE>double</CODE>
+absolute value,
+call
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?fabs">fabs</A></CODE>
+in C,
+<CODE>abs</CODE>
+in C++.
+</LI>
+</OL>
+
+<LI><CODE><A HREF = "mother.C">mother.C</A></CODE>:
+search for a small string in a big one.
+The data type
+<CODE>string</CODE>
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c%2B%2B+string">string</A></CODE>
+(short for
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c%2B%2B+basic_string">basic_string</A></CODE>
+of
+<CODE>char</CODE>s)
+is not built into the language;
+must include the header file
+<CODE>&lt;string&gt;</CODE>.
+<CODE>npos</CODE>
+has the last name
+<CODE>string</CODE>,
+just as
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c%2B%2B+cout">cout</A></CODE>
+has the last name
+<CODE>std</CODE>.</LI>
+</OL>
+
+<H2>Arrays</H2>
+
+<OL>
+<LI><CODE><A HREF = "array1.C">array1.C</A></CODE>
+and
+<CODE><A HREF = "array2.C">array2.C</A></CODE>:
+array of
+<CODE>int</CODE>&rsquo;s.
+Initial value for each array element.
+Use the data type
+<CODE>size_t</CODE>
+for a variable that holds the number of elements in an array,
+or that holds an array subscript.
+It is probably unnecessary to include the header file
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?stddef">&lt;cstddef&gt;</A></CODE>
+for
+<CODE>size_t</CODE>,
+since one of the other header files probably includes that one.</LI>
+
+<LI><CODE><A HREF = "array3.C">array3.C</A></CODE>:
+an array of
+<CODE>string</CODE>&rsquo;s</LI>
+
+<LI><CODE><A HREF = "monkey1.C">monkey1.C</A></CODE>: the Year of the Monkey.
+Use
+<CODE>%</CODE>
+to compute the subscript of an element in an array of
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c%2B%2B+basic_string">string</A></CODE>&rsquo;s.
+<BR><CODE><A HREF = "monkey2.C">monkey2.C</A></CODE>: same program, but with
+<CODE>if</CODE>
+statements instead of array.
+<BR><CODE><A HREF = "monkey3.C">monkey3.C</A></CODE>: same program, but with
+<CODE>switch</CODE>.
+</LI>
+
+<LI><CODE><A HREF = "plot.C">plot.C</A></CODE>: from the
+<CITE><A HREF =
+"http://www.amazon.com/Official-Movie-Plot-Generator-Combinations/dp/0974043915/">Movie
+Plot Generator</A></CITE>
+book.</LI>
+
+<LI><CODE><A HREF = "dependents1.C">dependents1.C</A></CODE>
+and
+<CODE><A HREF = "dependents2.C">dependents2.C</A></CODE>:
+number of dependents, without and with an array.</LI>
+
+<A NAME = "date"></A>
+<LI><CODE><A HREF = "date.C">date.C</A></CODE>:
+pretend that there is no such thing as a leap year
+in the following homework.
+Don&rsquo;t worry about
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?2+time">time</A></CODE>
+and
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?3c+localtime">localtime</A></CODE>.
+<OL>
+<LI>Break
+<CODE>distance</CODE>
+into
+<CODE>years</CODE>
+and
+<CODE>days</CODE>,
+where
+<CODE>days</CODE>
+is in the range 0 to 364 inclusive.
+(Do it the same way we broke 205 minutes into 3 hours and 25 minutes,
+or 205 cents into 2 dollars and 5 cents.
+You fail the course if you break it down like this:
+
+<PRE CLASS = "C">
+	int years = distance / 365 * 365;
+	int days = distance - 365 * years;
+</PRE>
+
+)
+For the time being, assume that the user will input a non-negative
+<CODE>distance</CODE>.
+You can then add
+<CODE>years</CODE>
+to
+<CODE>year</CODE>,
+leaping to within one year of the destination in a single bound.
+</LI>
+
+<LI>
+Now allow the user to input a negative
+<CODE>distance</CODE>.
+Break
+<CODE>distance</CODE>
+into
+<CODE>years</CODE>
+and
+<CODE>days</CODE>
+as above.
+Then if
+<CODE>days</CODE>
+turns out to be negative
+(as a result of a negative
+<CODE>distance</CODE>),
+add 365 to
+<CODE>days</CODE>
+to make it non-negative
+(guaranteeing that
+<CODE>days</CODE>
+is now in the range 0 to 364 inclusive),
+and compensate for the addition by subtracting 1 from
+<CODE>years</CODE>.
+For example, on some machines a distance of
+<NOBR>&ndash;367</NOBR>
+days will break down into a quotient of
+<NOBR>&ndash;2</NOBR>
+years and a remainder of 363 days
+(two years backwards and 363 days forwards).
+But on other machines, a distance of
+<NOBR>&ndash;367</NOBR>
+days will break down into
+a quotient of
+<NOBR>&ndash;1</NOBR>
+year and a remainder of
+<NOBR>&ndash;2</NOBR>
+days
+(one year backwards and an additional 2 days backwards).
+If your machine breaks
+<NOBR>&ndash;367</NOBR>
+down into a
+quotient of
+<NOBR>&ndash;1</NOBR>
+year and a remainder of
+<NOBR>&ndash;2</NOBR>
+days,
+change it to a quotient of
+<NOBR>&ndash;2</NOBR>
+years and a remainder of 363 days.
+Making
+<CODE>days</CODE>
+non-negative will make your loop much simpler.
+You get no credit if there is more than one loop.
+For example, do not write two loops, one to go forward and one to go back.
+</LI>
+
+<LI>
+Make the loop stride the rest of the way to the destination one
+<I>month</I>
+at a time,
+not one day at a time.
+You get no credit if there is more than one loop.
+For example, do not write two loops, one to go forward and one to go back.
+</LI>
+</OL>
+</LI>
+
+<LI>Output the lyrics to a song whose verses get
+<A HREF = "http://en.wikipedia.org/wiki/Cumulative_song">longer and longer</A>:
+<OL>
+<LI><CITE><A HREF = "christmas/christmas.html">The Twelve Days of
+Christmas</A></CITE></LI>
+
+<LI><CITE><A HREF =
+"http://en.wikipedia.org/wiki/Green_Grow_the_Rushes%2C_O">Green Grow the Rushes,
+O</A></CITE></LI>
+
+<LI><CITE>There&rsquo;s a Hole in the Bottom of the Sea</CITE></LI>
+
+<LI><SPAN LANG = "HE">&#x05D0;&#x05B6;&#x05D7;&#x05B8;&#x05D3;
+&#x05DE;&#x05B4;&#x05D9;
+&#x05D9;&#x05D5;&#x05C4;&#x05D3;&#x05B5;&#x05E2;&#x05B7;</SPAN>
+<BR>Output
+<A HREF = "http://www.unicode.org/charts/">Unicode</A>
+character codes in hexadecimal (e.g., the eight characters
+<CODE>&amp;#x05D0;</CODE> are
+&#x05D0;) and display the output file in a web browser.
+</LI>
+<LI>etc.</LI>
+</OL>
+</LI>
+
+<LI><CODE><A HREF = "bubblesort.C">bubblesort.C</A></CODE>:
+sort in increasing and decreasing order.
+Right justify with
+<CODE>setw</CODE>.
+<CODE><A HREF = "bubblesortstrings.C">bubblesortstrings.C</A></CODE>:
+sort strings in alphabetical order.</LI>
+
+<LI><CODE><A HREF = "howrandom.C">howrandom.C</A></CODE>:
+how random are the random numbers we get from
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?srand">srand</A></CODE>
+and
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?rand">rand</A></CODE>?
+Write into an uninitialized array, and then read from it.</LI>
+
+<LI><CODE><A HREF = "twod.C">twod.C</A></CODE>:
+a two-dimensional array.</LI>
+
+<LI><CODE><A HREF = "sudoku.C">sudoku.C</A></CODE>:
+If the top row of a
+<A HREF = "http://en.wikipedia.org/wiki/Sudoku">Sudoku</A>
+has exactly one missing number, fill it in.
+<OL>
+<LI>Do the same for each of the other eight rows.</LI>
+<LI>Do the same for each of the nine columns.</LI>
+<LI>Do the same for each of the nine 3 &times; 3 regions.</LI>
+<LI>Repeat all of the above as long as progress is being made.</LI>
+<LI>After you break out of the loop, print the puzzle.</LI>
+</OL>
+</LI>
+
+<LI>Manhattan street numbers:
+<CODE><A HREF = "street1.C">street1.C</A></CODE>
+(no array),
+<CODE><A HREF = "street2.C">street2.C</A></CODE>
+(one-dimensional array),
+<CODE><A HREF = "street3.C">street3.C</A></CODE>
+(two-dimensional array).</LI>
+
+<LI><CODE><A HREF = "avenue.C">avenue.C</A></CODE>:
+Manhattan Avenues</LI>
+</OL>
+
+<A NAME = "structuresAndArraysThereof">
+<H2>Structures and Arrays Thereof</H2>
+</A>
+
+<OL>
+<LI><CODE><A HREF = "struct.C">struct.C</A></CODE>:
+a structure containing two fields.
+Define the structure data type outside of main,
+even though we don&rsquo;t need to yet.
+</LI>
+
+<LI><CODE><A HREF = "single1.C">single1.C</A></CODE>:
+a single array of structures instead of the two parallel arrays in
+<CODE><A HREF = "parallel.C">parallel.C</A></CODE>
+or
+<CODE><A HREF = "avenue.C">avenue.C</A></CODE>
+</LI>
+
+<LI><A NAME = "plotHw">Make</A>
+<CODE><A HREF = "plot.C">plot.C</A></CODE>
+smart enough to know that a singular subject (&ldquo;A single mom&rdquo;)
+takes a singular verb (&ldquo;fights crime&rdquo;),
+while a plural subject (&ldquo;Three naughty nurses&rdquo;)
+takes a plural verb (&ldquo;fight crime&rdquo;).
+You&rsquo;ll be able to get rid of all those parenthesized letters
+(&ldquo;fight(s) crime&rdquo;).
+Change
+<CODE>subject</CODE>
+from an array of
+<CODE>string</CODE>s
+to an array of structures.
+Each structure will have two fields:
+a
+<CODE>size_t</CODE>
+(<CODE>0</CODE>
+for singular,
+<CODE>1</CODE>
+for plural)
+and a
+<CODE>string</CODE>
+giving the subject of the sentence.
+Change
+<CODE>predicate</CODE>
+from a one-dimensional array of
+<CODE>string</CODE>s
+to a two-dimensional array of
+<CODE>string</CODE>s
+(30 or more rows and 2 columns).
+Column 0 will contain
+predicates with a singular verb
+(<CODE>"fights crime"</CODE>).
+Column 1 will contain the corresponding predicates with plural verbs
+(<CODE>"fight crime"</CODE>).
+You can use the idiom
+<NOBR><CODE>sizeof arrayname / sizeof arrayname[0]</CODE></NOBR>
+to get the number of rows in the
+<CODE>predicate</CODE>
+array.
+Print out the predicate that agrees in number with the subject.
+No
+<CODE>if</CODE>
+statements are required for this homework.
+If you write
+<CODE>if</CODE>
+statements,
+your code is unnecessarily complicated.
+Entertain me by inventing additional subjects, predicates, and modifiers.
+</LI>
+
+<LI><CODE><A HREF = "rose.C">rose.C</A></CODE>:
+two-dimensional array of structures draws
+<A HREF = "rose.gif">this picture</A>
+of
+<CODE><A HREF = "/cgi-bin/cgiwrap/mm64/man?sin">sine</A></CODE>
+in polar co&ouml;rdinates.</LI>
+</OL>
+
+<H2>Functions, arguments, and return values</H2>
+
+<OL>
+<LI><CODE><A HREF = "function1.C">function1.C</A></CODE>
+and
+<CODE><A HREF = "function2.C">function2.C</A></CODE>:
+consolidate repeated chunks of code,
+with a loop if consecutive,
+with a function otherwise.
+Function must be declared before it is otherwise mentioned.
+<CITE><A HREF = "http://en.wikipedia.org/wiki/Secret_Agent_Man_(song)">Secret Agent Man</A></CITE>:
+<A HREF = "http://www.box.net/shared/umhzh24z7t">audio</A>.
+</LI>
+
+<LI><CODE><A HREF = "automatic.C">automatic.C</A></CODE>:
+a variable defined in a function
+(<A HREF = "http://en.wikipedia.org/wiki/Factorial">factorial</A>)
+is
+<I>automatically allocated:</I>
+it lives only while we are within the
+<CODE>{</CODE>curly braces<CODE>}</CODE>
+of the function.
+Factorial is the number of permutations.</LI>
+
+<LI><CODE><A HREF = "argument.C">argument.C</A></CODE>:
+pass an argument by value to a function.
+</LI>
+
+<LI><CODE><A HREF = "retval.C">retval.C</A></CODE>:
+return a value from a function.
+The
+<CODE>main</CODE>
+function has been returning
+<CODE>int</CODE>
+all along.</LI>
+
+<LI><CODE><A HREF = "weekday.C">weekday.C</A></CODE>:
+a function that is called from only two places.
+Package code as a function
+to divide the program into cleanly separated sections.
+</LI>
+
+<LI>Functions are how a C++ prgram communicates with the underlying
+<A HREF = "windowsinput.html">operating system</A>.
+</LI>
+
+<LI><A NAME = "recursion">Examples of recursion.</A>
+<UL>
+<LI>Do the work in a separate function, not in the
+<CODE>main</CODE>
+function.</LI>
+<LI>The function should do only the first part of the job
+(e.g., print the first number, perform the first multiplication).</LI>
+<LI>The function should call itself to do the rest of the job.
+Remember to scrape off the part of the job that has already been done.</LI>
+<LI>The call to itself must be inside an
+<CODE>if</CODE>
+that does the call only if there is still part of the job remains undone.</LI>
+</UL>
+
+<OL>
+<LI><CODE><A HREF = "rprint.C">rprint.C</A></CODE>:
+print the integers from 1 to 10 inclusive.
+The starting point is passed as an argument;
+the ending point 10 and the stride 1
+are hard-wired into the recursive function.</LI>
+
+<LI><CODE><A HREF = "end.C">end.C</A></CODE>:
+pass the ending point as a second argument.</LI>
+
+<LI><CODE><A HREF = "stride.C">stride.C</A></CODE>:
+pass the stride as a third argument.</LI>
+
+<LI><CODE><A HREF = "factorial.C">factorial.C</A></CODE>:
+compute the factorial of a number without a <CODE>for</CODE> loop.</LI>
+
+<LI><CODE><A HREF = "macguffin.C">macguffin.C</A></CODE>
+and
+<CODE><A HREF = "macguffin1.C">macguffin1.C</A></CODE>:
+search without a loop.</LI>
+
+<LI><CODE><A HREF = "gcd.C">gcd.C</A></CODE>:
+can you write this without a loop?
+Use GCD to find aspect ratio of screen: 1027 &times; 768.
+</LI>
+</OL>
+</LI>
+
+<LI><CODE><A HREF = "static.C">static.C</A></CODE>:
+a
+<I>statically allocated</I>
+variable is immortal.</LI>
+</OL>
+
+<A NAME = "scope">
+<H2>Scope</H2>
+</A>
+
+<OL>
+<LI><CODE><A HREF = "samename.C">samename.C</A></CODE>:
+a global variable, and a global variable with the same name as a local
+variable.
+The unary scope resolution operator
+<CODE>::</CODE>.</LI>
+
+<LI>Define a variable (<CODE>const</CODE> or non-<CODE>const</CODE>)
+or a function (inline or non-inline)
+in one
+<CODE>.C</CODE>
+file,
+and mention it in another.
+<OL>
+<LI><A HREF = "/~mm64/INFO1-CE9264/src/no_header/">without</A>
+a header
+(<CODE>.h</CODE>)
+file</LI>
+<LI><A HREF = "/~mm64/INFO1-CE9264/src/with_header/">with</A>
+a header file.
+A header should contain declarations, not definitions.
+Only static variables and functions can be defined in a header.
+<CODE>#ifndef</CODE>
+to prevent a
+<CODE>.C</CODE>
+file from including the same header twice.</LI>
+<LI><A HREF = "/~mm64/INFO1-CE9264/src/static/">static</A>
+global variables and functions.
+A
+<CODE>const</CODE>
+global variable is
+<CODE>static</CODE>
+by default.
+</OL>
+</LI>
+</OL>
+
+<H2>Pointers and References</H2>
+
+<OL>
+<LI>Pointer to a variable that is not an element of an array:
+<A HREF = "/~mm64/book/chapter01.pdf">Chapter 1</A>,
+p. 44</LI>
+
+<LI><CODE><A HREF = "reference.C">reference.C</A></CODE>:
+pass-by-value vs. pass by reference.
+One motivation for pointers is to allow a function to change the value
+of its argument.</LI>
+
+<LI><CODE><A HREF = "pass_array.C">pass_array.C</A></CODE>:
+an array is always passed by reference.
+This array is one-dimensional.</LI>
+
+<LI><CODE><A HREF = "pass_array2.C">pass_array2.C</A></CODE>:
+pass a two-dimensional array to a function.
+</LI>
+
+<LI><CODE><A HREF = "pp.C">pp.C</A></CODE>:
+a pointer to a pointer</LI>
+
+<LI>Pointer to a variable that is an element of an array:
+<A HREF = "/~mm64/book/chapter01.pdf">Chapter 1</A>,
+p. 46.
+Another motivation for pointers is to loop through an array
+faster than with a
+<CODE>size_t</CODE>
+subscript in square brackets.
+
+<LI><CODE><A HREF = "moving.C">moving.C</A></CODE>:
+compute the moving average of a series of numbers.
+Replace
+<CODE>i</CODE>
+and
+<CODE>j</CODE>
+with two pointers named
+<CODE>p</CODE>
+and
+<CODE>q</CODE>
+as in the above
+<CODE><A HREF = "bubblesort.C">bubblesort.C</A></CODE>
+and the
+<CODE><A HREF = "/~mm64/book/src/pointer/sort.C">sort.C</A></CODE>
+in
+<A HREF = "/~mm64/book/chapter01.pdf">Chapter 1</A>,
+p. 48.
+</LI>
+
+<LI>Pointer to a variable that is a structure:
+<A HREF = "/~mm64/book/chapter01.pdf">Chapter 1</A>,
+p. 49</LI>
+
+<LI>Pointer to a structure in an array of structures:
+<CODE><A HREF = "single1.C">single1.C</A></CODE>
+and
+<CODE><A HREF = "single2.C">single2.C</A></CODE>
+</LI>
+
+<LI>Const Pointers:
+<A HREF = "/~mm64/book/chapter01.pdf">Chapter 1</A>,
+p. 51</LI>
+
+<LI>References:
+<A HREF = "/~mm64/book/chapter01.pdf">Chapter 1</A>,
+p. 72</LI>
+</OL>
+
+<H2>Improvements to Functions</H2>
+
+<P>
+<A HREF = "/~mm64/book/chapter01.pdf">Chapter 1</A>,
+p. 81.
+Global functions and variables,
+<CODE>extern</CODE>, header files.
+</P>
+
+<H2>TCP/IP</H2>
+
+<OL>
+<LI><A HREF = "echo.html">Echo server and client</A></LI>
+<LI>A primitive
+<A HREF = "browser.C">web browser</A>
+that downloads one web page.</LI>
+
+<LI>The
+<A HREF = "browserwindows.C">same program</A>,
+for Microsoft Windows with Bloodshed Dev-Cpp.</LI>
+</OL>
+
+<H2><A HREF = "sqlite.html">SQLite database</A></H2>
+</BODY>
+</HTML>
